@@ -1,4 +1,4 @@
-# SimpleConsole-CSHARP-GAME
+# SimpleConsole-CSHARP-GAME (idea from DUSKERS(game) cli) 
 
 Console Turn Based game
 # feature : 
