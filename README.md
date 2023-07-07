@@ -1,6 +1,6 @@
-# SimpleConsole-CSHARP-GAME (idea from DUSKERS(game) cli) 
+# SimpleConsole-CSHARP-GAME 
 
-Console Turn Based game
+Console Turn Based game - (inspired from DUSKERS(game) cli)
 # feature : 
  PLAYER & ENEMY CLASS
 
