@@ -22,8 +22,9 @@ namespace Classes101
         public void takeEnemies()
         {
             for (int i = 0; i < enemyStorage.Count; i++)
-            {
-                Console.WriteLine(enemyStorage[i].ShowName() + " " +
+            {   
+                Thread.Sleep(800);
+                Console.WriteLine($"{i+1}.) "+ enemyStorage[i].ShowName() + " " +
                     enemyStorage[i].ShowHealth().ToString() + " Hp");
             }
         }
@@ -37,6 +38,7 @@ namespace Classes101
 
     internal class Enemies
     {
+        
         private string name { get; set; }
         private int healthPoint { get; set; }
         public void SetEnemy(string EnemyName, int hp)
