@@ -13,14 +13,19 @@ namespace Classes101
         string reward = "sword";
         public Player player;
         public EnemiesFactory enemies;
-        public Level(Player WhoIsPlayer) { 
+        public Level(Player WhoIsPlayer) {
             this.player = WhoIsPlayer;
         }
-        public void CreateLevel(int level,int EnemiesCount) {
+        public void CreateLevel(int level, int EnemiesCount) {
             this._level = level;
+            Console.WriteLine("Commands : (A)ttack (E)xit (I)dle) (D)escriptions\n");
+
+            player.ShowName();
+            player.ShowHealth();
+            player.ShowArmor();
+
             Console.WriteLine(
-                $"Level {level}\t" +
-                $"{player.playerName}[{player.ShowHealth()}]\n");
+                $"\nLevel {level}\t");
             Console.WriteLine("Hit Enter to Start");
             Console.ReadLine();
 
@@ -32,15 +37,13 @@ namespace Classes101
                 $"unknown enemies approaching!");
             CountDown(3);
             EnemyOrchSpawner.takeEnemies();
-            this.enemies=EnemyOrchSpawner;
+            this.enemies = EnemyOrchSpawner;
 
-            PlayerTurn(player,this.enemies);
-            
+            PlayerTurn(player, this.enemies);
+
 
         }
-        static void result(EnemiesFactory enemies, Player player
-            )
-        {
+        static void result(EnemiesFactory enemies, Player player) { 
             if (enemies.EnemiesCount() <= 0)
             {
                 Console.WriteLine("New Level");
@@ -49,6 +52,9 @@ namespace Classes101
             {   
                 Console.Clear();
                 Console.WriteLine("Commands : (A)ttack (E)xit (I)dle) (D)escription\n");
+                player.ShowName();
+                player.ShowHealth();
+                player.ShowArmor();
                 Console.WriteLine();
                 enemies.takeEnemies();
                 PlayerTurn(player,enemies);
@@ -67,11 +73,18 @@ namespace Classes101
                 Console.Write("\nYour Turn:");
                 userDecision = Console.ReadLine();
                 UserAttackTarget = userDecision.Split(" ");
-                if (UserAttackTarget.Length == 1)
+                if (userDecision.Trim() == "") {
+                    continue;
+                }
+                else if (UserAttackTarget.Length == 1)
                 {
                     if (UserAttackTarget.GetValue(0).ToString().ToUpper() == "D")
                     {
-                        Console.WriteLine("Description");
+                        Console.WriteLine("Description ");
+                    }
+                    else if(UserAttackTarget.GetValue(0).ToString().ToUpper() == "I"){
+                        result(enemies, player);
+                        break;
                     }
                     else
                     {

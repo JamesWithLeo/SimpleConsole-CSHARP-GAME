@@ -8,15 +8,65 @@ namespace Classes101
         public string playerName;
         private int AttackAttribute = 25;
         private int playerHealth = 50;
+        private int playerArmor = 0;
         private int MAX_PLAYER_HEALTH = 100;
+        private int MAX_PLAYER_ARMOR = 100;
+
 
         public Player(string name)
         {
             this.playerName = name;
         }
-        public string ShowHealth()
+        public void ShowName() {
+            Console.WriteLine("Player: {0}", playerName.ToUpper());
+        }
+        public void ShowHealth() {
+            int[] byTen = {5,10,15,20,25,30,35,40,45,50,55,60,65,70,75,80,85,90,95,100};
+            Console.Write("Health: ");
+            for (int i = 1;i <= playerHealth;i++) {
+                if (byTen.Contains(i))
+                {
+                    Console.Write("|");
+                }
+            }
+            for (int i = playerHealth; i <= MAX_PLAYER_HEALTH; i++) {
+                if (byTen.Contains(i))  {
+                    if (i == MAX_PLAYER_HEALTH) {
+                        Console.Write("]");
+                    }
+                    else {
+                    Console.Write("_");
+                    }
+                }
+            }
+            Console.Write(" ({0}/{1})", playerHealth, MAX_PLAYER_HEALTH);
+            Console.WriteLine();
+        }
+        public void ShowArmor()
         {
-            return playerHealth.ToString();
+            int[] byFive = { 5, 10, 15, 20, 25, 30, 35, 40, 45, 50, 55, 60, 65, 70, 75, 80, 85, 90, 95, 100 };
+            Console.Write("Armor:  ");
+            for (int i = 1; i <= playerArmor; i++)
+            {
+                if (byFive.Contains(i))
+                {
+                    Console.Write("|");
+                }
+            }
+            for (int i = playerArmor; i <= MAX_PLAYER_ARMOR; i++)
+            {
+                if (byFive.Contains(i)) {
+                    if (i == MAX_PLAYER_HEALTH)
+                    {
+                        Console.Write("]");
+                    }
+                    else {
+                        Console.Write("_");
+                    }
+                }
+            }
+            Console.Write(" ({0}/{1})", playerArmor, MAX_PLAYER_ARMOR);
+            Console.WriteLine();
         }
 
 
